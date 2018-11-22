@@ -1,6 +1,6 @@
 [
     {
-        "name":"Xenova Rockie",
+        "name":"Baby Rockie",
         "description":"Roomy main compartment with our signature front pocket design",
         "price":42.00,
         "image":"images/backpack.png"
@@ -18,6 +18,24 @@
         "image":"images/glasses.jpg"
     },
         {
+        "name":"Scott Digital Smart Band",
+        "description":"4/7 heart rate monitoring with Elevate™ wrist heart rate technology",
+        "price":365.00,
+        "image":"images/watch.png"
+    },
+    {
+        "name":"Scott Digital Smart Band",
+        "description":"4/7 heart rate monitoring with Elevate™ wrist heart rate technology",
+        "price":365.00,
+        "image":"images/watch.png"
+    },
+    {
+        "name":"Scott Digital Smart Band",
+        "description":"4/7 heart rate monitoring with Elevate™ wrist heart rate technology",
+        "price":365.00,
+        "image":"images/watch.png"
+    },
+    {
         "name":"Scott Digital Smart Band",
         "description":"4/7 heart rate monitoring with Elevate™ wrist heart rate technology",
         "price":365.00,
