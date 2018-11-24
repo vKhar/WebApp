@@ -4,20 +4,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title></title>
+    <title>Product Catalogue</title>
     <link rel="stylesheet" href="/static/products.css" />
     <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <img id="logo" src="/static/images/logo.jpg" />
-    <div class="menu">
-        <ul>
-            <li>Home</li>
-            <li>View Catalogue</li>
-            <li>Manage Catalogue</li>
-            <li>Help</li>
-        </ul>
-    </div>
+    {% include 'header.html' %}
     <h1> Products</h1>
     <main class="product-list">
         {% for p in data %}
