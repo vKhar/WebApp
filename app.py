@@ -1,3 +1,5 @@
+## Step 7: remove json file, json load and json save
+## use sqlite to list products and add new product
 from flask import Flask,render_template,request,redirect,url_for
 import os
 import sqlite3
