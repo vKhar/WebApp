@@ -3,8 +3,17 @@
     padding: 0;
     border: 0;
     text-align: justify;
+    margin-bottom: 2em;
 }
 
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 70px;
+    background-color: white;
+    width: 100%;
+}
 .product-list {
     margin: auto;
     width: 75%;
