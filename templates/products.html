@@ -18,7 +18,7 @@
                 <image src="/static/{{ p['image'] }}" />
             </div>           
             <div class="product-text">
-                <div class="product-name">{{ p["name"]}}</div>
+                <div class="product-name"><a href="{{ url_for('edit_product',product=p['name'])}}">{{ p["name"]}}</a></div>
                 <div class="product-description">{{ p["description"]}}</div>
                 <div class="product-price">${{ p["price"]}}</div>
             </div>

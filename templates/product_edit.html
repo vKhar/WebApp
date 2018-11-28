@@ -62,27 +62,28 @@
     <form action="#" method="post" enctype = "multipart/form-data">
         <div>
             <label for="name">Product Name:</label>
-            <input type="text" id="name" name="name" required="required">
+            <input type="text" id="name" name="name" required="required" value="{{ data['name']}}">
         </div>
         <div>
             <label for="price">Price:</label>
-            <input type="number" step="0.10" id="price" name="price">
+            <input type="number" step="0.10" id="price" name="price" value="{{data['price']}}">
         </div>
         <div>
             <label for="description">Product Description:</label>
-            <textarea id="description" name="description"></textarea>
+            <textarea id="description" name="description">{{ data['description']}}</textarea>
         </div>
         <div>
             <label for="image">Product image:</label>
             <input type="file" id="image" name="image">
+            <image src="/static/{{ data['image'] }}" style="width:100px;display:block;margin:auto auto" />
         </div>
         <div class="button">
-            <button type="submit">Add Product</button>
+            <button type="submit" name="submit" value="update">Update Product</button>
+            <button type="submit" name="submit" value="delete">Delete Product</button>
         </div>
     </form>
     <div>
         {% include 'messages.html' %}
     </div>
-
 </body>
 </html>

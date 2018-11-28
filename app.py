@@ -51,5 +51,52 @@ def add_product():
     else:
         return render_template("product_frm.html")
 
+@app.route("/edit/<product>", methods=['GET'])
+def edit_product(product):
+    try:
+        con= sqlite3.connect(DB)
+        con.row_factory=sqlite3.Row #name-based access to columns
+        cur=con.cursor()
+        cur.execute("SELECT * FROM products where name=?", (product,)) ## tuple
+        row=cur.fetchone()
+    except Exception as e:
+        flash (str(e))
+    finally:
+        return render_template("product_edit.html",data=row)
+
+@app.route("/edit/<product>", methods=['POST'])
+def update_product(product):
+    ## update twice: first without the image field
+    ## then with the image field, so if there is no change in image the first update will still commit
+    try:
+        with sqlite3.connect(DB) as con:
+            con.row_factory=sqlite3.Row #name-based access to columns
+            cur=con.cursor()
+            if request.form["submit"] == "update":
+                cur.execute("UPDATE products set name=?, description=?, price=? where name=?", 
+                            (request.form["name"], request.form["description"], request.form["price"],product))
+                msg="Product updated"
+            elif request.form["submit"] == "delete":
+                cur.execute("DELETE FROM products WHERE name=?",(product,))
+                msg="Product deleted"
+            con.commit()
+        flash(msg)
+
+        #handle image update
+        f=request.files['image'] ## generate a 400 Bad Request if no file upload    
+        upload_file_path=os.path.join(app.root_path,"static","images",f.filename)
+        with sqlite3.connect(DB) as con:
+            con.row_factory=sqlite3.Row #name-based access to columns
+            cur=con.cursor()
+            print(f.filename)
+            cur.execute("UPDATE products set image=? where name=?", 
+                        ("images/"+ f.filename, request.form['name'])) ## the name may have changed from the 1st update
+            f.save(upload_file_path)  
+            con.commit()
+    except Exception as e:
+        flash(str(e))
+    finally:
+        return redirect(url_for("root"))
+
 if __name__ == "__main__":
     app.run(debug=True)
