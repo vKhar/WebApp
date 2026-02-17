@@ -1,19 +1,18 @@
-﻿<!DOCTYPE html>
-
-<html lang="en" >
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title></title>
-    <link rel="stylesheet" href="products.css" />
+    <title>Products</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='products.css') }}" />
 </head>
 <body>
-    <img id="logo" src="images/logo.jpg" />
+    <img id="logo" src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" />
     <div class="menu">
         <ul>
             <li>Home</li>
             <li>View Catalogue</li>
-            <li>Manage Catalogue</li>
+            <li><a href="{{ url_for('insert_product') }}">Manage Catalogue</a></li>
             <li>Help</li>
         </ul>
     </div>
@@ -21,8 +20,8 @@
     <main class="product-list">
         <div class="product">
             <div class="product-image">
-                <img src="images/backpack.png" />
-            </div>           
+                <img src="{{ url_for('static', filename='images/backpack.png') }}" alt="Xenova Rockie backpack" />
+            </div>
             <div class="product-text">
                 <div class="product-name">Xenova Rockie</div>
                 <div class="product-description">Roomy main compartment with our signature front pocket design</div>
@@ -30,7 +29,7 @@
             </div>
         </div>
         <div class="product">
-            <div class="product-image"><img  src="images/camera.png" /></div>           
+            <div class="product-image"><img src="{{ url_for('static', filename='images/camera.png') }}" alt="Zanon camera" /></div>
             <div class="product-text">
                 <div class="product-name">Zanon EOS6D</div>
                 <div class="product-description">
@@ -41,9 +40,9 @@
         </div>
         <div class="product">
             <div class="product-image">
-                <img  src="images/glasses.jpg" />
+                <img src="{{ url_for('static', filename='images/glasses.jpg') }}" alt="Schola V glasses" />
             </div>
-            
+
             <div class="product-text">
                 <div class="product-name">Schola V</div>
                 <div class="product-description">A classical design in matt finish. Durable, tough and resistent to heat and cold</div>
@@ -52,8 +51,8 @@
         </div>
         <div class="product">
             <div class="product-image">
-                <img src="images/watch.png" />
-            </div> 
+                <img src="{{ url_for('static', filename='images/watch.png') }}" alt="Scott smart band" />
+            </div>
             <div class="product-text">
                 <p class="product-name">Scott Digital Smart Band</p>
                 <div class="product-description">
