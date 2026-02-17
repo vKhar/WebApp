@@ -136,4 +136,7 @@ def delete_product(product_id):
 
 if __name__ == '__main__':
     init_db()
-    app.run(debug=True)
+    # Debug mode should only be enabled in development
+    # Set DEBUG=1 environment variable to enable debug mode
+    debug_mode = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 't')
+    app.run(debug=debug_mode)
