@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Insert Product</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='products.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='insert_product.css') }}" />
+</head>
+<body>
+    <img id="logo" src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" />
+    <div class="menu">
+        <ul>
+            <li><a href="{{ url_for('root') }}">Home</a></li>
+            <li>View Catalogue</li>
+            <li>Manage Catalogue</li>
+            <li>Help</li>
+        </ul>
+    </div>
+
+    <main class="insert-wrapper">
+        <h1>Insert Product</h1>
+        <form class="insert-form">
+            <label for="name">Product Name</label>
+            <input id="name" name="name" type="text" placeholder="Enter product name" />
+
+            <label for="price">Price</label>
+            <input id="price" name="price" type="number" step="0.01" min="0" placeholder="Enter price" />
+
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="4" placeholder="Describe the product"></textarea>
+
+            <label for="product-image">Product Image</label>
+            <input id="product-image" name="product-image" type="file" accept="image/*" />
+            <p id="selected-file">No file selected.</p>
+            <img id="preview" alt="Selected product preview" hidden />
+
+            <button type="submit">Save Product</button>
+        </form>
+    </main>
+
+    <script>
+        const fileInput = document.getElementById('product-image');
+        const fileNameText = document.getElementById('selected-file');
+        const previewImage = document.getElementById('preview');
+
+        fileInput.addEventListener('change', () => {
+            const selectedFile = fileInput.files && fileInput.files[0];
+
+            if (!selectedFile) {
+                fileNameText.textContent = 'No file selected.';
+                previewImage.hidden = true;
+                previewImage.removeAttribute('src');
+                return;
+            }
+
+            fileNameText.textContent = `Selected: ${selectedFile.name}`;
+            previewImage.src = URL.createObjectURL(selectedFile);
+            previewImage.hidden = false;
+        });
+    </script>
+</body>
+</html>
