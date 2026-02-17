@@ -1,0 +1,10 @@
+*.db
+*.pyc
+__pycache__/
+*.pyo
+.Python
+env/
+venv/
+*.egg-info/
+dist/
+build/

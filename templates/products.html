@@ -12,9 +12,9 @@
     <img id="logo" src="/static/images/logo.jpg" />
     <div class="menu">
         <ul>
-            <li>Home</li>
-            <li>View Catalogue</li>
-            <li>Manage Catalogue</li>
+            <li><a href="{{ url_for('index') }}" class="active">Home</a></li>
+            <li><a href="{{ url_for('index') }}">View Catalogue</a></li>
+            <li><a href="{{ url_for('admin') }}">Manage Catalogue</a></li>
             <li>Help</li>
         </ul>
     </div>
