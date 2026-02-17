@@ -3,8 +3,7 @@ import os
 from flask import Flask, render_template, request, redirect, url_for, flash
 
 app = Flask(__name__)
-# TODO: In production, use a secure secret key from environment variable
-# app.secret_key = os.environ.get('SECRET_KEY', 'dev-key-change-in-production')
+# In production, set SECRET_KEY environment variable to a secure random value
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-key-please-change-in-production')
 
 DATABASE = 'products.db'

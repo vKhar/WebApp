@@ -59,6 +59,8 @@
                         <td class="actions">
                             <a href="{{ url_for('edit_product', product_id=product['id']) }}" class="btn btn-edit">Edit</a>
                             <form method="POST" action="{{ url_for('delete_product', product_id=product['id']) }}" style="display: inline;">
+                                <!-- Note: onclick confirmation is minimal client-side JS for better UX -->
+                                <!-- For pure server-side, implement a separate confirmation page -->
                                 <button type="submit" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this product?');">Delete</button>
                             </form>
                         </td>
