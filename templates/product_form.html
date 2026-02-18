@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% if mode == 'edit' %}
+    {% set heading = 'Edit Product' %}
+{% else %}
+    {% set heading = 'Add Product' %}
+{% endif %}
+
+{% block title %}{{ heading }}{% endblock %}
+
+{% block content %}
+<section class="form-shell">
+    <h2>{{ heading }}</h2>
+
+    <form class="product-form" method="post" enctype="multipart/form-data">
+        <label for="name">Product Name</label>
+        <input id="name" name="name" type="text" required value="{{ product['name'] if product and product['name'] else '' }}" />
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="5" required>{{ product['description'] if product and product['description'] else '' }}</textarea>
+
+        <label for="price">Price</label>
+        <input id="price" name="price" type="number" min="0" step="0.01" required value="{{ product['price'] if product and product['price'] is not none else '' }}" />
+
+        <label for="image">Product Image (Attach or drop file)</label>
+        <input id="image" name="image" type="file" accept=".png,.jpg,.jpeg,.gif,.webp" />
+
+        {% if mode == 'edit' and product and product['image_path'] %}
+        <p class="hint">Current image:</p>
+        <img class="preview" src="{{ url_for('static', filename=product['image_path']) }}" alt="Current image for {{ product['name'] }}" />
+        {% endif %}
+
+        <div class="actions">
+            <button class="btn" type="submit">Save</button>
+            <a class="btn btn-secondary" href="{{ url_for('product_list') }}">Cancel</a>
+        </div>
+    </form>
+</section>
+{% endblock %}
